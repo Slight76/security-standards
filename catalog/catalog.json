@@ -1,0 +1,294 @@
+{
+  "version": "1.0.0",
+  "status": "recommended-draft",
+  "repository": "Slight76/security-standards",
+  "rules": [
+    {
+      "id": "SEC-001",
+      "domain": "security",
+      "statement": "Every exposed operation MUST define authentication and server-enforced authorization, including resource ownership.",
+      "verification": "Positive and negative authorization tests",
+      "adr": "ADR-0009",
+      "document": "docs/security-architecture.md",
+      "status": "Proposed",
+      "applies_when": "the solution includes this domain; assess the linked architecture scope"
+    },
+    {
+      "id": "SEC-002",
+      "domain": "security",
+      "statement": "Solutions MUST document threats, trust boundaries, data classification, and mitigation owners.",
+      "verification": "Threat model review",
+      "adr": "ADR-0009",
+      "document": "docs/security-architecture.md",
+      "status": "Proposed",
+      "applies_when": "the solution includes this domain; assess the linked architecture scope"
+    },
+    {
+      "id": "SEC-003",
+      "domain": "security",
+      "statement": "Browser applications MUST NOT contain confidential credentials and token/session handling MUST follow the documented identity design.",
+      "verification": "Bundle inspection and identity tests",
+      "adr": "ADR-0009",
+      "document": "docs/security-architecture.md",
+      "status": "Proposed",
+      "applies_when": "the solution includes this domain; assess the linked architecture scope"
+    },
+    {
+      "id": "SEC-004",
+      "domain": "security",
+      "statement": "Sensitive data MUST have defined encryption, retention, deletion, and telemetry redaction controls.",
+      "verification": "Security and data lifecycle review",
+      "adr": "ADR-0009",
+      "document": "docs/security-architecture.md",
+      "status": "Proposed",
+      "applies_when": "the solution includes this domain; assess the linked architecture scope"
+    },
+    {
+      "id": "CORS-001",
+      "domain": "security",
+      "statement": "Solutions MUST decide whether browser access is same-origin or cross-origin before enabling CORS.",
+      "verification": "Deployment origin matrix and browser integration test",
+      "adr": "ADR-0014",
+      "document": "docs/cors-standard.md",
+      "status": "Proposed",
+      "applies_when": "a browser interacts with an API"
+    },
+    {
+      "id": "CORS-002",
+      "domain": "security",
+      "statement": "Cross-origin policies MUST use validated exact per-environment origins and explicit required capabilities.",
+      "verification": "Positive/negative preflight and production configuration tests",
+      "adr": "ADR-0014",
+      "document": "docs/cors-standard.md",
+      "status": "Proposed",
+      "applies_when": "a browser interacts with an API"
+    },
+    {
+      "id": "CORS-003",
+      "domain": "security",
+      "statement": "CORS MUST NOT substitute for authentication, authorization, or CSRF protection.",
+      "verification": "Unauthorized actual request and CSRF negative tests",
+      "adr": "ADR-0014",
+      "document": "docs/cors-standard.md",
+      "status": "Proposed",
+      "applies_when": "a browser interacts with an API"
+    },
+    {
+      "id": "IAM-001",
+      "domain": "security",
+      "statement": "Each solution MUST select and document its browser/workload identity profile and session lifecycle.",
+      "verification": "Identity ADR, logout/expiry integration tests",
+      "adr": "ADR-0015",
+      "document": "docs/identity-standard.md",
+      "status": "Proposed",
+      "applies_when": "an application authenticates users or workloads"
+    },
+    {
+      "id": "IAM-002",
+      "domain": "security",
+      "statement": "APIs MUST authenticate tokens for their intended audience and enforce resource/tenant authorization.",
+      "verification": "Wrong-audience and cross-tenant denial tests",
+      "adr": "ADR-0015",
+      "document": "docs/identity-standard.md",
+      "status": "Proposed",
+      "applies_when": "an application authenticates users or workloads"
+    },
+    {
+      "id": "IAM-003",
+      "domain": "security",
+      "statement": "Cookie-authenticated mutations MUST include independently verified CSRF protection.",
+      "verification": "Missing, invalid, and cross-session antiforgery tests",
+      "adr": "ADR-0015",
+      "document": "docs/identity-standard.md",
+      "status": "Proposed",
+      "applies_when": "an application authenticates users or workloads"
+    },
+    {
+      "id": "IAM-004",
+      "domain": "security",
+      "statement": "Agents MUST NOT introduce custom identity protocols or browser client secrets.",
+      "verification": "Dependency/configuration and browser bundle review",
+      "adr": "ADR-0015",
+      "document": "docs/identity-standard.md",
+      "status": "Proposed",
+      "applies_when": "an application authenticates users or workloads"
+    },
+    {
+      "id": "SEC-005",
+      "domain": "security",
+      "statement": "Exposed boundaries MUST validate inputs and mitigate applicable injection, SSRF, upload, and abuse risks.",
+      "verification": "Threat-linked negative tests",
+      "adr": "ADR-0015",
+      "document": "docs/application-security-standard.md",
+      "status": "Proposed",
+      "applies_when": "an application accepts untrusted data or handles protected information"
+    },
+    {
+      "id": "SEC-006",
+      "domain": "security",
+      "statement": "Secrets and sensitive telemetry MUST have scoped access, rotation, redaction, and incident procedures.",
+      "verification": "Synthetic leak tests and revocation exercise",
+      "adr": "ADR-0015",
+      "document": "docs/application-security-standard.md",
+      "status": "Proposed",
+      "applies_when": "an application accepts untrusted data or handles protected information"
+    },
+    {
+      "id": "SEC-007",
+      "domain": "security",
+      "statement": "Webhooks MUST authenticate payloads and prevent unauthorized replay before side effects.",
+      "verification": "Bad-signature, expired-timestamp, and replay tests",
+      "adr": "ADR-0015",
+      "document": "docs/application-security-standard.md",
+      "status": "Proposed",
+      "applies_when": "an application accepts untrusted data or handles protected information"
+    },
+    {
+      "id": "SECR-001",
+      "domain": "security",
+      "statement": "Secrets MUST NOT be committed to source control, baked into container images, or emitted in logs, traces, or error responses.",
+      "verification": "Secret scanning with push protection enabled; image history inspection; redaction test on identity endpoints",
+      "adr": "ADR-0001",
+      "document": "docs/secrets-management.md",
+      "status": "Proposed",
+      "applies_when": "an application, pipeline, or agent uses a credential, key, token, or connection string"
+    },
+    {
+      "id": "SECR-002",
+      "domain": "security",
+      "statement": "Runtime and CI secrets MUST live in the platform secret store (Fly.io secrets, GitHub environment secrets) and be read from configuration at startup with fail-fast on absence.",
+      "verification": "Configuration review; startup test with a missing secret fails",
+      "adr": "ADR-0001",
+      "document": "docs/secrets-management.md",
+      "status": "Proposed",
+      "applies_when": "an application, pipeline, or agent uses a credential, key, token, or connection string"
+    },
+    {
+      "id": "SECR-003",
+      "domain": "security",
+      "statement": "Every secret MUST have a named owner, a rotation procedure, and a maximum age recorded in the application's secrets inventory.",
+      "verification": "Secrets inventory reviewed at release; rotation rehearsal evidence",
+      "adr": "ADR-0001",
+      "document": "docs/secrets-management.md",
+      "status": "Proposed",
+      "applies_when": "an application, pipeline, or agent uses a credential, key, token, or connection string"
+    },
+    {
+      "id": "SECR-004",
+      "domain": "security",
+      "statement": "A suspected leak MUST trigger revocation and replacement before history cleanup, with the exposure window reviewed and the incident recorded.",
+      "verification": "Incident record linked from the threat model",
+      "adr": "ADR-0001",
+      "document": "docs/secrets-management.md",
+      "status": "Proposed",
+      "applies_when": "an application, pipeline, or agent uses a credential, key, token, or connection string"
+    },
+    {
+      "id": "TM-001",
+      "domain": "security",
+      "statement": "Every solution MUST maintain a threat model from the shared template, with one row per boundary and misuse case, updated in the same change that adds or alters a trust boundary, store, public contract, or identity flow.",
+      "verification": "Threat model file linked from the introducing PR; diagram matches deployed components",
+      "adr": "ADR-0001",
+      "document": "docs/threat-modeling-guide.md",
+      "status": "Proposed",
+      "applies_when": "a solution adds or changes a trust boundary, persistent store, public contract, identity flow, or external integration"
+    },
+    {
+      "id": "TM-002",
+      "domain": "security",
+      "statement": "Each threat model row MUST map its mitigation to a handbook rule ID (or a solution ADR) and name a verification and a residual risk owner.",
+      "verification": "Review of the Rule, Verification, and Owner columns; cited tests exist and run in CI",
+      "adr": "ADR-0001",
+      "document": "docs/threat-modeling-guide.md",
+      "status": "Proposed",
+      "applies_when": "a solution adds or changes a trust boundary, persistent store, public contract, identity flow, or external integration"
+    },
+    {
+      "id": "SCS-001",
+      "domain": "security",
+      "statement": "Every GitHub Actions `uses:` reference MUST be pinned to a full commit SHA, with Dependabot configured for the `github-actions` ecosystem.",
+      "verification": "Workflow lint for SHA pins; `dependabot.yml` includes `github-actions`",
+      "adr": "ADR-0001",
+      "document": "docs/ci-cd-and-supply-chain-security.md",
+      "status": "Proposed",
+      "applies_when": "a repository uses GitHub Actions to build, test, publish, or deploy"
+    },
+    {
+      "id": "SCS-002",
+      "domain": "security",
+      "statement": "Workflows MUST declare top-level `permissions: contents: read` and widen permissions only in the jobs that need them.",
+      "verification": "Workflow review; no job inherits write permissions by default",
+      "adr": "ADR-0001",
+      "document": "docs/ci-cd-and-supply-chain-security.md",
+      "status": "Proposed",
+      "applies_when": "a repository uses GitHub Actions to build, test, publish, or deploy"
+    },
+    {
+      "id": "SCS-003",
+      "domain": "security",
+      "statement": "Deployments MUST authenticate with OIDC federation or short-lived scoped tokens stored as environment secrets, and production deploys MUST run in a protected environment restricted to `main`.",
+      "verification": "Environment protection settings; absence of long-lived provider keys in repository secrets",
+      "adr": "ADR-0001",
+      "document": "docs/ci-cd-and-supply-chain-security.md",
+      "status": "Proposed",
+      "applies_when": "a repository uses GitHub Actions to build, test, publish, or deploy"
+    },
+    {
+      "id": "SCS-004",
+      "domain": "security",
+      "statement": "Workflows MUST NOT execute code from untrusted pull requests with secrets or write permissions (`pull_request_target` with PR checkout), and release jobs MUST publish build provenance attestations for shipped artifacts.",
+      "verification": "Trigger review; `gh attestation verify` succeeds for each released artifact",
+      "adr": "ADR-0001",
+      "document": "docs/ci-cd-and-supply-chain-security.md",
+      "status": "Proposed",
+      "applies_when": "a repository uses GitHub Actions to build, test, publish, or deploy"
+    },
+    {
+      "id": "DEP-001",
+      "domain": "security",
+      "statement": "Repositories MUST commit lockfiles, restore in locked mode in CI, pin container base images by digest, and run automated dependency updates (Dependabot or Renovate) on at least a weekly schedule for every ecosystem they use.",
+      "verification": "Lockfiles present; CI restore uses locked mode; `dependabot.yml` or `renovate.json` covers nuget, npm, docker, and github-actions as applicable",
+      "adr": "ADR-0001",
+      "document": "docs/dependency-and-sbom-policy.md",
+      "status": "Proposed",
+      "applies_when": "a repository declares third-party packages (NuGet, npm, container base images, GitHub Actions)"
+    },
+    {
+      "id": "DEP-002",
+      "domain": "security",
+      "statement": "CI MUST fail on High or Critical vulnerabilities in direct or transitive dependencies, and fixes MUST ship within the severity SLA or carry a documented reachability note or exception.",
+      "verification": "`dotnet list package --vulnerable` and `npm audit` run in CI; alert triage notes; exception records for overdue items",
+      "adr": "ADR-0001",
+      "document": "docs/dependency-and-sbom-policy.md",
+      "status": "Proposed",
+      "applies_when": "a repository declares third-party packages (NuGet, npm, container base images, GitHub Actions)"
+    },
+    {
+      "id": "DEP-003",
+      "domain": "security",
+      "statement": "Every release MUST publish a CycloneDX SBOM per deployable artifact and MUST pass a license check against the allow-list.",
+      "verification": "SBOM attached to the release; license check job green or reviewed",
+      "adr": "ADR-0001",
+      "document": "docs/dependency-and-sbom-policy.md",
+      "status": "Proposed",
+      "applies_when": "a repository declares third-party packages (NuGet, npm, container base images, GitHub Actions)"
+    }
+  ],
+  "externalDecisions": {
+    "ADR-0009": {
+      "repository": "Slight76/architecture-standards",
+      "status": "Proposed",
+      "url": "https://github.com/Slight76/architecture-standards/blob/main/adr/0009-security.md"
+    },
+    "ADR-0014": {
+      "repository": "Slight76/architecture-standards",
+      "status": "Proposed",
+      "url": "https://github.com/Slight76/architecture-standards/blob/main/adr/0014-implementation-decisions.md"
+    },
+    "ADR-0015": {
+      "repository": "Slight76/architecture-standards",
+      "status": "Proposed",
+      "url": "https://github.com/Slight76/architecture-standards/blob/main/adr/0015-implementation-decisions.md"
+    }
+  }
+}
