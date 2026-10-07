@@ -1,5 +1,6 @@
 ---
 name: security-standards
+license: MIT
 description: Slight76 team security standards for .NET APIs, React SPAs, Postgres, Fly.io, and GitHub Actions. Use when implementing or reviewing authentication, authorization, resource or tenant ownership checks, OAuth/OIDC flows, JWT validation and audiences, cookies, sessions, logout, CSRF/antiforgery, CORS and browser origin policy, input validation, SSRF, file uploads, rate limiting, CSP, webhooks and signature verification, secrets handling (user-secrets, .env, Fly.io secrets, GitHub Actions secrets, rotation, leaked credentials, secret scanning), log redaction, threat modeling and STRIDE, filling the threat-model template, security review of a PR, CI/CD hardening (pinning actions to SHAs, permissions, OIDC, protected environments, pull_request_target, attestations), dependency updates (Dependabot, Renovate, lockfiles, npm audit, dotnet list package --vulnerable, severity SLAs), SBOM generation (CycloneDX), and license allow-lists. Rule prefixes SEC, IAM, CORS, SECR, TM, SCS, DEP.
 ---
 # Security standards
